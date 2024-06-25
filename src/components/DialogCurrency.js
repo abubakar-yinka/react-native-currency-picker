@@ -35,7 +35,13 @@ export const DialogCurrency = (props) => {
   const [search, setSearch] = useState("");
   const [listCurrency, setListCurrency] = useState(filteredCurrencies);
 
-  const { itemStyle = {}, container, searchStyle, tileStyle } = modalStyle;
+  const {
+    itemStyle = {},
+    container,
+    searchStyle,
+    tileStyle,
+    listContainer,
+  } = modalStyle;
 
   const {
     itemContainer,
@@ -178,7 +184,7 @@ export const DialogCurrency = (props) => {
           />
         </View>
       </View>
-      <View style={styles.listContainer}>
+      <View style={[styles.listContainer, listContainer]}>
         <FlatList
           keyboardShouldPersistTaps={"handled"}
           ref={(ref) => (_flatList = ref)}
