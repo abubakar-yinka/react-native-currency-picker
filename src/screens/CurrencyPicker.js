@@ -3,7 +3,7 @@ import { View, StyleSheet, TouchableOpacity, Text, Modal } from "react-native";
 import { Styles } from "../styles";
 import { DialogCurrency } from "../components";
 import { CurrencyFlag } from "../components/CurrencyFlag";
-import { filterCurrencies } from "../utils/currency";
+import { currencies, filterCurrencies } from "../utils/currency";
 
 export const CurrencyPicker = (props) => {
   const [currencyName, setCurrencyName] = useState("US Dollar");
@@ -39,7 +39,10 @@ export const CurrencyPicker = (props) => {
     preferredCurrencies = [],
   } = props;
 
-  const filteredCurrencies = filterCurrencies(preferredCurrencies);
+  const filteredCurrencies =
+    preferredCurrencies && preferredCurrencies.length > 0
+      ? filterCurrencies(preferredCurrencies)
+      : currencies;
 
   const {
     container,

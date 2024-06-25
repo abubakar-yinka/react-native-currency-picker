@@ -12,7 +12,7 @@ import { Colors } from "../styles";
 import data from "../constants/CommonCurrency.json";
 import { getStyles } from "./styles";
 import { CurrencyFlag } from "./CurrencyFlag";
-import { filterCurrencies } from "../utils/currency";
+import { currencies, filterCurrencies } from "../utils/currency";
 
 export const DialogCurrency = (props) => {
   const {
@@ -30,7 +30,10 @@ export const DialogCurrency = (props) => {
     preferredCurrencies = [],
   } = props;
 
-  const filteredCurrencies = filterCurrencies(preferredCurrencies);
+  const filteredCurrencies =
+    preferredCurrencies && preferredCurrencies.length > 0
+      ? filterCurrencies(preferredCurrencies)
+      : currencies;
 
   const [search, setSearch] = useState("");
   const [listCurrency, setListCurrency] = useState(filteredCurrencies);
